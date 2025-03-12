@@ -9,7 +9,7 @@ import os
 def generate_layout(room_width, room_height, num_furniture):
     """Generates a furniture layout with zero overlapping."""
     
-    # ✅ Furniture images (Make sure these paths exist)
+    # ✅ Furniture images 
     FURNITURE_IMAGES = {
         "chair": "images/chair.png",
         "sofa": "images/sofa.png",
@@ -47,7 +47,7 @@ def generate_layout(room_width, room_height, num_furniture):
     ax.set_title("Furniture Layout", fontsize=14)
     ax.set_frame_on(True)
 
-    # ✅ Load background image if available
+    # ✅ Load background image 
     if os.path.exists(ROOM_BACKGROUND):
         bg_img = mpimg.imread(ROOM_BACKGROUND)
         ax.imshow(bg_img, extent=[0, room_width, 0, room_height], aspect='auto')
