@@ -1,32 +1,41 @@
 import streamlit as st
 import numpy as np
-from stable_baselines3 import PPO
-from furniture_env import FurniturePlacementEnv
+import tensorflow as tf
 from generate_layout import generate_layout
 
-st.title("🛋️ AI Furniture Arrangement (RL Model)")
+# ✅ Load trained Keras model only once
+@st.cache_resource
+def load_model():
+    return tf.keras.models.load_model("furniture_model.keras")
 
-# User Inputs
+model = load_model()  # ✅ Load once for speed
+
+st.title("🎩 AI Furniture Arrangement (ML Model)")
+
+# ✅ User Inputs
 room_width = st.slider("Room Width", 3, 10, 5)
 room_height = st.slider("Room Height", 3, 10, 5)
-num_furniture = st.slider("Number of Furniture Items", 2, 5, 3)  # ✅ Now flexible
+num_furniture = st.slider("Number of Furniture Items", 1, 5, 3)
 
-# Load the correct RL model
-model_path = f"furniture_rl_model_{num_furniture}_items.zip"
-rl_model = PPO.load(model_path)  # ✅ Dynamically load the correct model
+# ✅ Use Streamlit session state to store predictions
+if "predictions" not in st.session_state:
+    st.session_state.predictions = None
 
 if st.button("Generate Layout"):
-    # Initialize environment
-    env = FurniturePlacementEnv(room_width, room_height, num_furniture)
-    obs, _ = env.reset()
+    # ✅ Normalize input
+    input_data = np.array([[room_width, room_height, num_furniture]])
+    input_data = input_data / (np.max(input_data, axis=0) + 1e-8)  # Prevent division by zero
 
-    # AI places furniture step by step
-    for _ in range(num_furniture):
-        action, _ = rl_model.predict(obs)  # ✅ Use trained RL model
-        obs, _, done, _, _ = env.step(action)
-        if done:
-            break
+    # ✅ Predict furniture positions
+    st.session_state.predictions = model.predict(input_data)
 
-    # Generate and display the layout
-    fig = generate_layout(room_width, room_height, num_furniture, obs.flatten())
+    # ✅ Denormalize output
+    st.session_state.predictions *= np.array([room_width, room_height] * (st.session_state.predictions.shape[1] // 2))
+
+# ✅ Generate and display the layout only once
+if st.session_state.predictions is not None:
+    fig = generate_layout(room_width, room_height, num_furniture)  # ✅ No extra argument
     st.pyplot(fig)
+
+# ✅ Check if GPU is being used
+print(tf.config.list_physical_devices('GPU'))
