@@ -1,113 +1,92 @@
-# 🏦 AI-Powered Furniture Arrangement (Reinforcement Learning)
+# 🎩 AI Furniture Arrangement App
 
-This project uses **Reinforcement Learning (RL)** to **optimize furniture placement** in a room. The AI model is trained using **Stable-Baselines3 (PPO)** and deployed as an interactive **Streamlit web app**.
+This is a **Streamlit-based AI application** that predicts and visualizes **optimal furniture placements** in a room using a trained **TensorFlow model**.
 
----
-
-## 🚀 Live Demo
-
-🔗 [**Try the App on Streamlit**](https://your-app.streamlit.app) (*Replace with your actual link*)
-
----
-
-## 📌 Features
-
-- ✅ AI **automatically arranges furniture** in a room
-- ✅ Uses **Reinforcement Learning (PPO)** to **optimize placement**
-- ✅ Avoids **overlapping furniture** using an RL reward system
-- ✅ Supports **different room sizes & furniture counts**
-- ✅ Interactive **Streamlit UI** for real-time testing
+## 🚀 Features
+- 📏 **User Inputs:** Room dimensions and number of furniture items
+- 🔮 **AI Predictions:** Uses a trained neural network to predict furniture placements
+- 🎨 **Visualization:** Displays the predicted layout using `matplotlib`
+- 🌐 **Deployed on Streamlit Cloud**: [Live App](https://furniture-arrangement.streamlit.app/)
 
 ---
 
-## 🤦️ Installation & Running Locally
-
-### **1️⃣ Clone the Repository**
-
-```bash
-git clone https://github.com/YOUR_USERNAME/furniture_ai_rl.git
-cd furniture_ai_rl
+## 📂 Project Structure
+```
+📁 furniture-arrangement-app
+│── app.py                 # Streamlit app
+│── train_model.py         # Training script
+│── generate_layout.py     # Visualization logic
+│── furniture_model.keras  # Trained ML model
+│── requirements.txt       # Required dependencies
+│── README.md              # Project documentation
+│── images/                # Folder containing furniture images
 ```
 
-### **2️⃣ Install Dependencies**
+---
 
-```bash
+## 📦 Installation
+### 1️⃣ Clone the Repository
+```sh
+git clone https://github.com/nandasantosh74/Furniture-arrangement-Project.git
+cd Furniture-arrangement-Project
+```
+
+### 2️⃣ Install Dependencies
+```sh
 pip install -r requirements.txt
 ```
 
-### **3️⃣ Run the AI App**
-
-```bash
+### 3️⃣ Run the Application Locally
+```sh
 streamlit run app.py
 ```
 
-🛠 Open `` in your browser to interact with the AI! 🎉
-
 ---
 
-## 📊 Training the RL Model (Optional)
-
-If you want to **train the RL model yourself**, run:
-
-```bash
-python train_rl.py
-```
-
-This will train the AI for **200K+ steps** and save multiple models:
-
-```
-furniture_rl_model_2_items.zip
-furniture_rl_model_3_items.zip
-furniture_rl_model_4_items.zip
-furniture_rl_model_5_items.zip
-```
-
-Each model corresponds to different furniture counts.
-
----
-
-## 🖥 Tech Stack
-
-- **Python 3.8+**
-- **Stable-Baselines3 (PPO)**
-- **Gymnasium**
-- **Streamlit**
-- **Matplotlib**
-- **TensorFlow**
-
----
-
-## 🚀 Deploying on Streamlit Cloud
-
-You can make your AI **publicly available** by deploying it on **Streamlit Cloud**.
-
-### **1️⃣ Push Your Code to GitHub**
-
-Run the following commands:
-
-```bash
+## 📡 Deploying on Streamlit Cloud
+### 1️⃣ Push Code to GitHub
+```sh
 git add .
-git commit -m "Updated RL model training and deployment"
+git commit -m "Added README.md"
 git push origin main
 ```
 
-### **2️⃣ Deploy on Streamlit Cloud**
+### 2️⃣ Deploy on [Streamlit Cloud](https://share.streamlit.io/)
+- Click **"New App"**
+- Select your GitHub repository
+- Set **Main file path** to `app.py`
+- Click **Deploy** 🚀
 
-1. Go to [**Streamlit Cloud**](https://share.streamlit.io/)
-2. Click **"New App"** → Select your GitHub repo
-3. Set **Main file:** `app.py`
-4. Click **"Deploy"** 🚀
-
-🔗 **Your AI-powered furniture app is now public!** 🎉
-
----
-
-## 🌟 License
-
-This project is licensed under the **MIT License** – Free to use & modify!
+### 3️⃣ Access the Deployed App
+Your app is live at:  
+[https://furniture-arrangement.streamlit.app/](https://furniture-arrangement.streamlit.app/)
 
 ---
 
-## 🤝 Contributing
+## 🔧 Troubleshooting
+### **1. Slow Performance?**
+- Make sure you **use caching** (`@st.cache_resource`, `@st.cache_data`)
+- Reduce the **model size** if possible
 
-Want to improve the AI? Fork the repo & submit a pull request! 😊
+### **2. Streamlit Not Recognizing Model?**
+- Ensure `furniture_model.keras` is in the **root directory**
+
+### **3. Images Not Loading?**
+- Make sure all images are inside an `images/` folder
+- Ensure `generate_layout.py` is using the correct file paths
+
+---
+
+## 📜 License
+This project is open-source and available under the **MIT License**.
+
+---
+
+## ⭐ Contribute
+If you find this project useful, feel free to ⭐ star the repo and contribute!
+
+---
+
+**👨‍💻 Author:** Nanda Santosh  
+**📌 GitHub:** [nandasantosh74](https://github.com/nandasantosh74)
+
