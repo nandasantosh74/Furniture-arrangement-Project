@@ -88,9 +88,13 @@ Your app is live at:
 ### **4. Image Overlapping?**
 -
 -Use collision detection in "generate_layout.py" to check if furniture overlaps before placing it.
+
 -Implement a minimum distance constraint when generating random positions.
+
 -Sort furniture by size (largest first) so larger items are placed before smaller ones.
+
 -Adjust is_overlapping() function to include buffer spacing between items.
+
 -If complete overlap prevention is required, consider using a Reinforcement Learning (RL) approach, where an agent learns to place furniture optimally without collisions. However, in this project, we use a Feedforward Neural Network (FNN) instead of RL because:
   FNN runs significantly faster since it directly predicts positions rather than iteratively learning through rewards and      penalties.
   FNN is easier to train and deploy, making the app more efficient for real-time use.
