@@ -13,7 +13,7 @@ def generate_layout(room_width, room_height, num_furniture):
     FURNITURE_IMAGES = {
         "chair": "images/chair.png",
         "sofa": "images/sofa.png",
-        "bed": "images/bed.png",
+        "bed": "images/Bed.png",
         "table": "images/table.png",
         "cupboard": "images/cupboard.png"
     }
