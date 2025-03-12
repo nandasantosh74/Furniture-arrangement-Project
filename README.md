@@ -10,6 +10,16 @@ This is a **Streamlit-based AI application** that predicts and visualizes **opti
 
 ---
 
+## 🏗️ Tech Stack
+- **Frontend:** Streamlit (Python)
+- **Backend:** TensorFlow/Keras for ML model
+- **Data Processing:** NumPy
+- **Visualization:** Matplotlib
+- **Deployment:** Streamlit Cloud
+- **Version Control:** Git & GitHub
+
+---
+
 ## 📂 Project Structure
 ```
 📁 furniture-arrangement-app
