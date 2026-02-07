@@ -3,5 +3,5 @@ numpy
 pandas
 matplotlib
 scikit-learn
-streamlit==1.9.0
+streamlit>=1.30
 pillow
